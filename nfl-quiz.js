@@ -17,7 +17,7 @@ function startQuiz() {
   startButtonEl.parentNode.parentNode.classList.add("d-none");
   questionEl.parentNode.classList.remove("d-none");
   shuffleQuestion = questions.sort(function () {
-    Math.random() - .5;
+    Math.random() * 3
   })
   currentQuestionsIndex = 0
   var timerInterval = setInterval(function () {
@@ -49,7 +49,9 @@ function showQuestions(question) {
     button.classList.add('mb-1')
     if (choices.correct) {
       button.dataset.correct = choices.correct
-    }
+    }  else {
+      secondsLeft - 15}
+
     button.addEventListener('click', selectAnswer)
     answerButtonEl.parentNode.appendChild(button)
   })
@@ -61,23 +63,6 @@ function resetQuestion() {
   }
 }
 function selectAnswer(event) {
-  var hitButton = event.target.button
-  var correctAnswer = hitButton.dataset.correct
-  setStatusClass(document.body, correct)
-  Array.from(answerButtonEl.children).forEach(function () {
-    setStatusClass(button, button.dataset.correct)
-  })
-}
-
-function setStatusClass(element, correct) {
-  clearStatusClass(element)
-  if (correct) {
-    element.classList.remove('btn-primary')
-    element.classList.add('btn-success')
-  } else {
-    element.classList.remove('btn-primary')
-    element.classList.add('btn-danger')
-  }
 }
 
 function endQuiz() {

@@ -92,8 +92,13 @@ function nextQuestion() {
 }
 
 function showQuestions(question) {
-  questionEl.innerText = currentQuestion
-
+  questionEl.innerText = currentQuestion.question
+  
+    var button = document.createElement('btn')
+  
+  button.addEventListener('click', selectAnswer)
+  answerButtonEl.parentNode.appendChild(button)
+  
 }
 
 

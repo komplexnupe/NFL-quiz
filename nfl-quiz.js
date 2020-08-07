@@ -88,10 +88,10 @@ function startQuiz() {
 }
 
 function nextQuestion() {
-  showQuestions(currentQuestion)
+  showQuestions()
 }
 
-function showQuestions(question) {
+function showQuestions() {
   questionEl.innerText = currentQuestion.question
   
     var button = document.createElement('btn')

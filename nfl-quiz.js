@@ -6,7 +6,83 @@ var answerButtonEl = document.getElementById('answer-buttons');
 var timerInterval;
 var secondsLeft = 75;
 var timeCap = 0;
-let currentQuestion;
+let shuffleQuestion, currentQuestionsIndex
+
+// Begin Quiz
+
+startButtonEl.addEventListener('click', startQuiz);
+
+function startQuiz() {
+  console.log("Started");
+  startButtonEl.parentNode.parentNode.classList.add("d-none");
+  questionEl.parentNode.classList.remove("d-none");
+  shuffleQuestion = questions.sort(function () {
+    Math.random() - .5;
+  })
+  currentQuestionsIndex = 0
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timerEl.textContent = secondsLeft;
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      endQuiz();
+    }
+
+  }, 1000);
+
+  nextQuestion()
+
+}
+
+function nextQuestion() {
+  showQuestions(shuffleQuestion[currentQuestionsIndex])
+}
+resetQuestion()
+function showQuestions(question) {
+  questionEl.innerText = question.question
+  question.choices.forEach(function (choices) {
+    var button = document.createElement('button')
+    button.innerText = choices.text
+    button.classList.add('btn')
+    button.classList.add('btn-primary')
+    button.classList.add('w-100')
+    button.classList.add('mb-1')
+    if (choices.correct) {
+      button.dataset.correct = choices.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answerButtonEl.parentNode.appendChild(button)
+  })
+}
+
+function resetQuestion() {
+  while (answerButtonEl.firstChild) {
+    answerButtonEl.removeChild(answerButtonEl.firstChild)
+  }
+}
+function selectAnswer(event) {
+  var hitButton = event.target.button
+  var correctAnswer = hitButton.dataset.correct
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonEl.children).forEach(function () {
+    setStatusClass(button, button.dataset.correct)
+  })
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element)
+  if (correct) {
+    element.classList.remove('btn-primary')
+    element.classList.add('btn-success')
+  } else {
+    element.classList.remove('btn-primary')
+    element.classList.add('btn-danger')
+  }
+}
+
+function endQuiz() {
+
+};
 
 var questions = [
   {
@@ -61,51 +137,4 @@ var questions = [
     ]
   }
 
-];
-
-
-// Begin Quiz
-
-startButtonEl.addEventListener('click', startQuiz);
-
-function startQuiz() {
-  console.log("Started");
-  startButtonEl.parentNode.parentNode.classList.add("d-none");
-  questionEl.parentNode.classList.remove("d-none");
-  currentQuestion = questions[0]
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timerEl.textContent = secondsLeft;
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-      endQuiz();
-    }
-
-  }, 1000);
-
-  nextQuestion()
-  
-}
-
-function nextQuestion() {
-  showQuestions()
-}
-
-function showQuestions() {
-  questionEl.innerText = currentQuestion.question
-  
-    var button = document.createElement('btn')
-  
-  button.addEventListener('click', selectAnswer)
-  answerButtonEl.parentNode.appendChild(button)
-  
-}
-
-
-function selectAnswer() {
-
-}
-
-function endQuiz() {
-
-};
+]

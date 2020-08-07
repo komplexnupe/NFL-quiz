@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <title>NFL Quiz</title>
+</head>
+
+<body>
+    <!-- High Scores & Timer -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">View High Scores</a>
+        <span class="navbar-text text-justify" id="timer">
+            75
+        </span>
+    </nav>
+    <!-- Container -->
+    <div class="container w-50 mx-auto mt-5" id="container">
+        <div class="d-none" id="questions-container">
+            <div class="h-auto" id="quiz-questions"><h2 class="text-center">Questions</h2>
+                <ul class="p-2">
+                    <button class="btn btn-primary w-100 mb-1" type="submit" id="answer-buttons">Answer 1</button>
+                    <button class="btn btn-primary w-100 mb-1" type="submit" id="answer-buttons">Answer 2</button>
+                    <button class="btn btn-primary w-100 mb-1" type="submit" id="answer-buttons">Answer 3</button>
+                    <button class="btn btn-primary w-100 mb-1" type="submit" id="answer-buttons">Answer 4</button>
+                    <button class="btn btn-primary w-100 mb-1" type="submit" id="answer-buttons">Answer 5</button>
+                </ul>
+            </div>
+        </div>
+        <!-- Start -->
+        <div class="card center" style="width: 32rem;" id="start">
+            <h1 class="text-center">NFL Greats Quiz</h1>
+            <div class="card-body text-center">
+                <p class="card-text">This quiz will challenge your knowledge of who some of the greatest athletes
+                    are to play their respective postions in the NFL. Good luck!
+                </p>
+                <button class="btn-lg btn-primary" type="submit" id="start-btn">Start Quiz</button>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="nfl-quiz.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+        integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

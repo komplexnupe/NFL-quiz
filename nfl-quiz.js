@@ -36,6 +36,7 @@ function nextQuestion() {
   showQuestions(shuffleQuestion[currentQuestionsIndex])
 }
 resetQuestion()
+
 function showQuestions(question) {
   questionEl.innerText = question.question
   question.choices.forEach(function (choices) {
@@ -47,20 +48,25 @@ function showQuestions(question) {
     button.classList.add('mb-1')
     if (choices.correct) {
       button.dataset.correct = choices.correct
-    }  else {
-      secondsLeft - 15}
+    } else {
+      secondsLeft - 15
+    }
 
     button.addEventListener('click', selectAnswer)
-    answerButtonEl.parentNode.appendChild(button)
+    answerButtonEl.appendChild(button)
   })
 }
 
 function resetQuestion() {
-  while (answerButtonEl.firstChild) {
-    answerButtonEl.removeChild(answerButtonEl.firstChild)
-  }
+  answerButtonEl.innerHTML = ""
 }
 function selectAnswer(event) {
+  var correct = event.target.getAttribute("data-correct")
+  if (correct) {
+    currentQuestionsIndex++;
+    resetQuestion()
+    nextQuestion()
+  }
 }
 
 function endQuiz() {

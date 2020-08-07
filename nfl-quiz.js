@@ -6,7 +6,7 @@ var answerButtonEl = document.getElementById('answer-buttons');
 var timerInterval;
 var secondsLeft = 75;
 var timeCap = 0;
-let currentQuestion = [0];
+let currentQuestion
 
 var questions = [
   {
@@ -72,8 +72,7 @@ function startQuiz() {
   console.log("Started");
   startButtonEl.parentNode.parentNode.classList.add("d-none");
   questionEl.parentNode.classList.remove("d-none");
-  questionEL.textContent = currentQuestion
-  console.log(currentQuestion);
+  currentQuestion.questions[0]
   var timerInterval = setInterval(function() {
     secondsLeft--;
     timerEl.textContent = secondsLeft;
@@ -89,11 +88,11 @@ function startQuiz() {
 }
 
 function nextQuestion() {
-
+  showQuestions(currentQuestion)
 }
 
 function showQuestions(question) {
-  questionEl.innerHTML = question.question
+  questionEl.innerText = currentQuestion
 
 }
 

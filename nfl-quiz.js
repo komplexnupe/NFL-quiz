@@ -16,9 +16,7 @@ function startQuiz() {
   console.log("Started");
   startButtonEl.parentNode.parentNode.classList.add("d-none");
   questionEl.parentNode.classList.remove("d-none");
-  shuffleQuestion = questions.sort(function () {
-    Math.random() * 3
-  })
+  shuffleQuestion = questions
   currentQuestionsIndex = 0
   var timerInterval = setInterval(function () {
     secondsLeft--;

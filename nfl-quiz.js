@@ -6,7 +6,7 @@ var answerButtonEl = document.getElementById('answer-buttons');
 var timerInterval;
 var secondsLeft = 75;
 var timeCap = 0;
-let currentQuestion
+let currentQuestion = questions[0]
 
 var questions = [
   {

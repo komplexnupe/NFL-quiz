@@ -2,6 +2,7 @@ var startButtonEl = document.getElementById("start-btn");
 var timerEl = document.getElementById("timer");
 var questionEl = document.getElementById('quiz-questions');
 var answerButtonEl = document.getElementById('answer-buttons');
+var formEl = document.getElementById("form")
 
 var timerInterval;
 var secondsLeft = 75;
@@ -53,6 +54,7 @@ function showQuestions(question) {
     button.addEventListener('click', selectAnswer)
     answerButtonEl.appendChild(button)
   })
+ 
 }
 
 function resetQuestion() {
@@ -75,7 +77,8 @@ function selectAnswer(event) {
 }
 
 function endQuiz() {
-
+  questionEl.parentNode.classList.add("d-none");
+  formEl.parentNode.parentNode.classList.remove("d-none")
 };
 
 var questions = [

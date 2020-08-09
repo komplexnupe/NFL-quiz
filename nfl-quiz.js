@@ -38,7 +38,7 @@ function nextQuestion() {
 resetQuestion()
 
 function showQuestions(question) {
-  questionEl.innerText = question.question
+  questionEl.innerHTML = "<h1>" + question.question + "</h1>"
   question.choices.forEach(function (choices) {
     var button = document.createElement('button')
     button.innerText = choices.text
@@ -48,9 +48,7 @@ function showQuestions(question) {
     button.classList.add('mb-1')
     if (choices.correct) {
       button.dataset.correct = choices.correct
-    } else {
-      secondsLeft - 15
-    }
+    } 
 
     button.addEventListener('click', selectAnswer)
     answerButtonEl.appendChild(button)
@@ -66,6 +64,13 @@ function selectAnswer(event) {
     currentQuestionsIndex++;
     resetQuestion()
     nextQuestion()
+  } else { 
+    (event.target.getAttribute !== correct);
+    secondsLeft = secondsLeft - 10;
+    currentQuestionsIndex++;
+    resetQuestion()
+    nextQuestion()
+
   }
 }
 

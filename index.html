@@ -19,6 +19,15 @@
     </nav>
     <!-- Container -->
     <div class="container w-50 mx-auto mt-5" id="container">
+        <div class="d-none card center" style="width: 32rem;" id="highscoreName">
+            <h1 class="text-center">NFL Greats Quiz</h1>
+            <div class="card-body text-center">
+                <p class="card-text">Thanks for taking this quiz! Please input your first name so we can add your score
+                    to the High Scores List!
+                </p>
+                <input class="form-control" type="text" placeholder="Your First Name">
+            </div>
+        </div>
         <div class="d-none text-center" id="questions-container">
             <div class="row text-uppercase text-center" id="quiz-questions">Questions</div>
             <div class="row col-12 w-50" id="answer-buttons">
@@ -39,27 +48,19 @@
                 </p>
                 <button class="btn-lg btn-primary" type="submit" id="start-btn">Start Quiz</button>
             </div>
-            <div class="d-none card center" style="width: 32rem;" id="highscore name">
-                <h1 class="text-center">NFL Greats Quiz</h1>
-                <div class="card-body text-center">
-                    <p class="card-text">Thanks for taking this quiz! Please input your first name so we can add your score to the High Scores List! 
-                    </p>
-                    <input class="form-control" type="text" placeholder="Your First Name">
-                </div>
+
+
         </div>
-
-
-    </div>
-    <script src="nfl-quiz.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
-        integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
-        crossorigin="anonymous"></script>
+        <script src="nfl-quiz.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+            integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>

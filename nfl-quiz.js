@@ -2,84 +2,11 @@ var startButtonEl = document.getElementById("start-btn");
 var timerEl = document.getElementById("timer");
 var questionEl = document.getElementById('quiz-questions');
 var answerButtonEl = document.getElementById('answer-buttons');
-var formEl = document.getElementById("form")
+var formEl = document.getElementById("highscoreName")
 
 var timerInterval;
 var secondsLeft = 75;
 var timeCap = 0;
-let shuffleQuestion, currentQuestionsIndex
-
-// Begin Quiz
-
-startButtonEl.addEventListener('click', startQuiz);
-
-function startQuiz() {
-  console.log("Started");
-  startButtonEl.parentNode.parentNode.classList.add("d-none");
-  questionEl.parentNode.classList.remove("d-none");
-  shuffleQuestion = questions
-  currentQuestionsIndex = 0
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timerEl.textContent = secondsLeft;
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      endQuiz();
-    }
-
-  }, 1000);
-
-  nextQuestion()
-
-}
-
-function nextQuestion() {
-  showQuestions(shuffleQuestion[currentQuestionsIndex])
-}
-resetQuestion()
-
-function showQuestions(question) {
-  questionEl.innerHTML = "<h1>" + question.question + "</h1>"
-  question.choices.forEach(function (choices) {
-    var button = document.createElement('button')
-    button.innerText = choices.text
-    button.classList.add('btn')
-    button.classList.add('btn-primary')
-    button.classList.add('w-100')
-    button.classList.add('mb-1')
-    if (choices.correct) {
-      button.dataset.correct = choices.correct
-    } 
-
-    button.addEventListener('click', selectAnswer)
-    answerButtonEl.appendChild(button)
-  })
- 
-}
-
-function resetQuestion() {
-  answerButtonEl.innerHTML = ""
-}
-function selectAnswer(event) {
-  var correct = event.target.getAttribute("data-correct")
-  if (correct) {
-    currentQuestionsIndex++;
-    resetQuestion()
-    nextQuestion()
-  } else { 
-    (event.target.getAttribute !== correct);
-    secondsLeft = secondsLeft - 10;
-    currentQuestionsIndex++;
-    resetQuestion()
-    nextQuestion()
-
-  }
-}
-
-function endQuiz() {
-  questionEl.parentNode.classList.add("d-none");
-  formEl.parentNode.parentNode.classList.remove("d-none")
-};
 
 var questions = [
   {
@@ -135,3 +62,78 @@ var questions = [
   }
 
 ]
+// Begin Quiz
+
+startButtonEl.addEventListener('click', startQuiz);
+
+function startQuiz() {
+  console.log("Started");
+  startButtonEl.parentNode.parentNode.classList.add("d-none");
+  questionEl.parentNode.classList.remove("d-none");
+  currentQuestionsIndex = 0
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timerEl.textContent = secondsLeft;
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      endQuiz();
+    }
+
+  }, 1000);
+
+  nextQuestion()
+
+}
+
+function nextQuestion() {
+  showQuestions(questions[currentQuestionsIndex]);
+  console.log(currentQuestionsIndex);
+  console.log(questions.length -1);
+  if (currentQuestionsIndex + 1 == questions.length) {
+    endQuiz()
+  }
+}
+resetQuestion()
+
+function showQuestions(arr) {
+  questionEl.innerHTML = "<h1>" + arr.question + "</h1>"
+  arr.choices.forEach(function (choices) {
+    var button = document.createElement('button')
+    button.innerText = choices.text
+    button.classList.add('btn')
+    button.classList.add('btn-primary')
+    button.classList.add('w-100')
+    button.classList.add('mb-1')
+    if (choices.correct) {
+      button.dataset.correct = choices.correct
+    }
+
+    button.addEventListener('click', selectAnswer)
+    answerButtonEl.appendChild(button)
+  })
+
+}
+
+function resetQuestion() {
+  answerButtonEl.innerHTML = ""
+}
+function selectAnswer(event) {
+  var correct = event.target.getAttribute("data-correct")
+  if (correct) {
+    currentQuestionsIndex++;
+    resetQuestion()
+    nextQuestion()
+  } else {
+    (event.target.getAttribute !== correct);
+    secondsLeft = secondsLeft - 10;
+    currentQuestionsIndex++;
+    resetQuestion()
+    nextQuestion()
+
+  }
+}
+
+function endQuiz() {
+  formEl.classList.remove("d-none")
+  questionEl.parentNode.classList.add("d-none")
+};
